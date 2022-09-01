@@ -25,7 +25,7 @@
     height: 350px;
 }
 
-button {
+.button-home {
     width: 200px;
     height: 50px;
     background-image: url('../../assets/images/buttonimg.png');
