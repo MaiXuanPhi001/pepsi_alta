@@ -1,15 +1,20 @@
 import React, { useRef, useState } from 'react'
 import imgfile from '../../assets/images/imgfile.png'
 
-export default function ImageRegister() {
+export default function ImageRegister({ infoCard, dispatch }) {
     const [file1, setFile1] = useState('')
 
-    const changeFile = (e) => {
-        setFile1(e.target.files[0].name)
+    const changeFile = (e, action) => {
+        console.log('file: ' + JSON.stringify(e.target.files[0]))
+        dispatch({
+            type: action,
+            name: e.target.files[0].name,
+            file: e.target.files[0]
+        })
     }
 
     // https://www.pluralsight.com/guides/how-to-use-a-simple-form-submit-with-files-in-react
-    console.log('render')
+
     return (
         <div>
             <p className='text-container'>HÌNH ẢNH</p>
@@ -18,31 +23,31 @@ export default function ImageRegister() {
                     <p className='text-address'>Hình thiệp cưới</p>
                     <div className='file-img-register'>
                         <img src={imgfile} />
-                        <input type={'file'} id='img1' accept='image/*' onChange={changeFile} />
+                        <input type='file' id='img1' onChange={e => changeFile(e, 'IMAGES/WEDDINGINITATION')} />
                         <label htmlFor='img1' className='text-name-file'>
-                            {file1 || 'Đính kèm ảnh'}
+                            {infoCard.images.weddingInitationName || 'Đính kèm ảnh'}
                         </label>
                     </div>
                 </div>
 
                 <div>
-                    <p className='text-address'>Hình thiệp cưới</p>
+                    <p className='text-address'>Hình hóa đơn bán hàng</p>
                     <div className='file-img-register'>
                         <img src={imgfile} />
-                        <input type={'file'} id='img1' accept='image/*' onChange={changeFile} />
-                        <label htmlFor='img1' className='text-name-file'>
-                            {file1 || 'Đính kèm ảnh'}
+                        <input type='file' id='img2' onChange={e => changeFile(e, 'IMAGES/BILL')} />
+                        <label htmlFor='img2' className='text-name-file'>
+                            {infoCard.images.billName || 'Đính kèm ảnh'}
                         </label>
                     </div>
                 </div>
 
                 <div>
-                    <p className='text-address'>Hình thiệp cưới</p>
+                    <p className='text-address'>Hình khối sản phẩm</p>
                     <div className='file-img-register'>
                         <img src={imgfile} />
-                        <input type={'file'} id='img1' accept='image/*' onChange={changeFile} />
-                        <label htmlFor='img1' className='text-name-file'>
-                            {file1 || 'Đính kèm ảnh'}
+                        <input type='file' id='img3' onChange={e => changeFile(e, 'IMAGES/PRODUCT')} />
+                        <label htmlFor='img3' className='text-name-file'>
+                            {infoCard.images.productName || 'Đính kèm ảnh'}
                         </label>
                     </div>
                 </div>
@@ -50,3 +55,6 @@ export default function ImageRegister() {
         </div>
     )
 }
+
+
+
