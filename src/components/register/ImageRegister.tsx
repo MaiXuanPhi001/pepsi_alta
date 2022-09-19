@@ -1,10 +1,10 @@
 import React, { useRef, useState } from 'react'
-import imgfile from '../../assets/images/imgfile.png'
 
-export default function ImageRegister({ infoCard, dispatch }) {
-    const [file1, setFile1] = useState('')
+export default function ImageRegister(props: any) {
+    const { infoCard, dispatch }: any = props
+    const [file1, setFile1] = useState<string>('')
 
-    const changeFile = (e, action) => {
+    const changeFile = (e: any, action: any) => {
         console.log('file: ' + JSON.stringify(e.target.files[0]))
         dispatch({
             type: action,
@@ -22,7 +22,7 @@ export default function ImageRegister({ infoCard, dispatch }) {
                 <div>
                     <p className='text-address'>Hình thiệp cưới</p>
                     <div className='file-img-register'>
-                        <img src={imgfile} />
+                        <img src={require('../../assets/images/imgfile.png')} />
                         <input type='file' id='img1' onChange={e => changeFile(e, 'IMAGES/WEDDINGINITATION')} />
                         <label htmlFor='img1' className='text-name-file'>
                             {infoCard.images.weddingInitationName || 'Đính kèm ảnh'}
@@ -33,7 +33,7 @@ export default function ImageRegister({ infoCard, dispatch }) {
                 <div>
                     <p className='text-address'>Hình hóa đơn bán hàng</p>
                     <div className='file-img-register'>
-                        <img src={imgfile} />
+                        <img src={require('../../assets/images/imgfile.png')} />
                         <input type='file' id='img2' onChange={e => changeFile(e, 'IMAGES/BILL')} />
                         <label htmlFor='img2' className='text-name-file'>
                             {infoCard.images.billName || 'Đính kèm ảnh'}
@@ -44,7 +44,7 @@ export default function ImageRegister({ infoCard, dispatch }) {
                 <div>
                     <p className='text-address'>Hình khối sản phẩm</p>
                     <div className='file-img-register'>
-                        <img src={imgfile} />
+                        <img src={require('../../assets/images/imgfile.png')} />
                         <input type='file' id='img3' onChange={e => changeFile(e, 'IMAGES/PRODUCT')} />
                         <label htmlFor='img3' className='text-name-file'>
                             {infoCard.images.productName || 'Đính kèm ảnh'}

@@ -3,7 +3,8 @@ import CardInfo from './CardInfo'
 import ImageRegister from './ImageRegister'
 import UserInfo from './UserInfo'
 
-export default function FormRegister({ infoCard, dispatch, tinhDB }) {
+export default function FormRegister(props: any) {
+    const { infoCard, dispatch, tinhDB }: any = props
     return (
         <div className='form-register'>
             <CardInfo

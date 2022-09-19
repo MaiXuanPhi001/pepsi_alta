@@ -1,9 +1,10 @@
 import React from 'react'
 import { FaChevronDown } from 'react-icons/fa'
 
-export default function CardInfo({ infoCard, dispatch, tinhDB }) {
+export default function CardInfo(props: any) {
+    const { infoCard, dispatch, tinhDB }: any = props
 
-    const changeCard = (item, action) => {
+    const changeCard = (item: any, action: any) => {
         dispatch({ type: action, value: item })
     }
 
@@ -19,7 +20,7 @@ export default function CardInfo({ infoCard, dispatch, tinhDB }) {
                             <FaChevronDown className='icon-select' />
                         </div>
                         <div className='option-container'>
-                            {tinhDB.map(item => {
+                            {tinhDB.map((item: any) => {
                                 return (
                                     <div onClick={() => changeCard(item, 'CARD/CHANGE_TINH')} className='option-content'>{item.name}</div>
                                 )
@@ -36,7 +37,7 @@ export default function CardInfo({ infoCard, dispatch, tinhDB }) {
                             <FaChevronDown className='icon-select' />
                         </div>
                         <div className='option-container'>
-                            {infoCard.card.listHuyen.map(item => {
+                            {infoCard.card.listHuyen.map((item: any) => {
                                 return (
                                     <div onClick={() => changeCard(item, 'CARD/CHANGE_HUYEN')} className='option-content'>{item.name}</div>
                                 )
@@ -53,7 +54,7 @@ export default function CardInfo({ infoCard, dispatch, tinhDB }) {
                             <FaChevronDown className='icon-select' />
                         </div>
                         <div className='option-container'>
-                            {infoCard.card.listShop.map(item => {
+                            {infoCard.card.listShop.map((item: any) => {
                                 return (
                                     <div onClick={() => changeCard(item, 'CARD/CHANGE_SHOP')} className='option-content'>
                                         <p>{item.name}</p>

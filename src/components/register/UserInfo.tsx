@@ -1,13 +1,13 @@
 import React from 'react'
 import { FaChevronDown } from 'react-icons/fa'
 
-export default function UserInfo({ infoCard, dispatch, tinhDB }) {
-
-    const changeUser = (item, action) => {
+export default function UserInfo(props: any) {
+    const { infoCard, dispatch, tinhDB }: any = props
+    const changeUser = (item: any, action: any) => {
         dispatch({ type: action, value: item })
     }
 
-    const changeUserInfo = (e, action) => {
+    const changeUserInfo = (e: any, action: any) => {
         dispatch({ type: action, value: e.target.value })
     }
 
@@ -37,7 +37,7 @@ export default function UserInfo({ infoCard, dispatch, tinhDB }) {
                                 <FaChevronDown className='icon-select' />
                             </div>
                             <div className='option-container'>
-                                {tinhDB.map(item => {
+                                {tinhDB.map((item: any) => {
                                     return (
                                         <div onClick={() => changeUser(item, 'PARTY/CHANGE_TINH')} className='option-content'>{item.name}</div>
                                     )
@@ -54,7 +54,7 @@ export default function UserInfo({ infoCard, dispatch, tinhDB }) {
                                 <FaChevronDown className='icon-select' />
                             </div>
                             <div className='option-container'>
-                                {infoCard.party.listHuyen.map(item => {
+                                {infoCard.party.listHuyen.map((item: any) => {
                                     return (
                                         <div onClick={() => changeUser(item, 'PARTY/CHANGE_HUYEN')} className='option-content'>{item.name}</div>
                                     )

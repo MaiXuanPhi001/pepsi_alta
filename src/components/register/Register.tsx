@@ -2,7 +2,6 @@ import React, { useEffect, useReducer } from 'react'
 import { useNavigate } from 'react-router-dom';
 import Nav from '../reuse/Nav'
 import './registerStyle.css'
-import ice from '../../assets/images/register.png'
 import FormRegister from './FormRegister'
 import CardInfo from './CardInfo';
 
@@ -37,7 +36,7 @@ const initInfoCard = {
     }
 }
 
-const infoCardReducer = (state, action) => {
+const infoCardReducer = (state: any, action: any) => {
     switch (action.type) {
         case 'CARD/CHANGE_TINH':
             return {
@@ -181,13 +180,12 @@ function Register() {
         formData.append('images', infoCard.images.bill)
         formData.append('images', infoCard.images.product)
 
-        fetch('http://192.168.1.12:4000/users/insertUserPepsi', {
+        fetch('http://192.168.12.67:4000/users/insertUserPepsi', {
             method: 'POST',
             body: formData
         })
             .then(res => res.json())
             .then(res => {
-                res.error && alert('Đăng ký thất bại, vui lòng thử lại')
                 !res.error &&  navigate('/success')
             })
             .catch(err => console.log('error: ' + JSON.stringify(err)))
@@ -197,7 +195,7 @@ function Register() {
         <div className='register-container'>
             <Nav />
             <div className='ice-container'>
-                <img src={ice} className='img-register' />
+                <img src={require('../../assets/images/register.png')} className='img-register' />
                 <div className='form-bg-register'>
                     <FormRegister
                         infoCard={infoCard}
